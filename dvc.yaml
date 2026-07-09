@@ -1,0 +1,12 @@
+stages:
+  ingest:
+    cmd: python src/ingest.py
+    deps: [src/ingest.py]
+    outs: [data/raw/transactions.csv]
+  features:
+    cmd: python src/features.py
+    deps:
+      - src/features.py
+      - data/raw/transactions.csv
+    outs:
+      - data/processed/features.parquet
